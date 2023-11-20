@@ -4,10 +4,14 @@
  */
 package com.argentinaprograma.tpintegrador.Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Data;
 
 @Data
 public class Comercial extends Sector {
+    
+      private List<Cliente> listaCliente = new ArrayList<>();
 
     public Comercial(String nombre) {
         super(nombre);
@@ -18,16 +22,17 @@ public class Comercial extends Sector {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-      public void altaCliente(Tecnico tecnico){
+      public void altaCliente(Cliente cliente){
+        List<Cliente> listaCliente = this.listaCliente;
+        listaCliente.add(cliente);
+      }
     
-    }
-    
-     public void bajaCliente(Tecnico tecnico){
+     public void bajaCliente(Cliente cliente){
     
     }
      
      
-   public void ModificacioCliente(Tecnico tecnico){
+   public void ModificacioCliente(Cliente cliente){
     
     }
     

@@ -4,10 +4,15 @@
  */
 package com.argentinaprograma.tpintegrador.Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Data;
 
 @Data
 public class RRHH extends Sector{
+    
+    private List<Tecnico> listaTecnico = new ArrayList<>();
+    
     
     public RRHH(){
         super("Recursos Humanos");
@@ -19,6 +24,11 @@ public class RRHH extends Sector{
     }
     
     public void altaTecnico(Tecnico tecnico){
+        
+        List<Tecnico> listaTecnico = this.listaTecnico;
+        listaTecnico.add(tecnico);
+        
+       
     
     }
     

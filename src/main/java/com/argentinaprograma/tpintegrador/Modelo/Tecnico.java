@@ -40,7 +40,7 @@ public class Tecnico  extends Persona{
     }
 
     
-    public void asignarNuevaHabilida(Especialidad nuevaHabilidad) {
+    public void asignarNuevaHabilidad(Especialidad nuevaHabilidad) {
         agregarHabilidad(nuevaHabilidad);
         System.out.println("Al tecnico " + this.getNombre()+ " le ha sisdo asinada la Habilidad " + nuevaHabilidad);
     }
