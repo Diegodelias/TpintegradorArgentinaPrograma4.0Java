@@ -6,12 +6,17 @@ package com.argentinaprograma.tpintegrador.Modelo.Estados;
 
 import com.argentinaprograma.tpintegrador.Modelo.Cliente;
 import com.argentinaprograma.tpintegrador.Modelo.Incidente;
+import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
+import java.util.List;
 
 /**
  *
  * @author Windows 10
  */
 public interface EstadoIncidente {
+    
+    
+    void identificarClientes(Incidente incidente , List <Cliente> Listaclientes);
     
     /* identificar cliente:El cliente llama a la mesa de ayuda y proporciona datos de identificación 
     (razón social, CUIT). Estos datos se ingresan en el sistema para mostrar 
@@ -27,7 +32,7 @@ public interface EstadoIncidente {
     disponibles para resolver el problema. El operador selecciona 
     uno y recibe el tiempo estimado de resolución. Informa al cliente sobre la 
     creación del incidente y la fecha probable de solución.*/
-    void asginarTecnico();
+    void asginarTecnico(Incidente incidente ,Tecnico tecnico);
     
     /*notificarTecnico: Una vez confirmado el incidente, el sistema notifica al técnico sobre el nuevo incidente para resolver. */
     void notificarTecnico();

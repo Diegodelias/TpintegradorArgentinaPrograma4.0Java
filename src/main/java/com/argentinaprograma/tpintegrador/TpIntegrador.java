@@ -8,11 +8,17 @@ import com.argentinaprograma.tpintegrador.Modelo.Cliente;
 import com.argentinaprograma.tpintegrador.Modelo.Comercial;
 import com.argentinaprograma.tpintegrador.Modelo.Especialidad;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.AltaInicialEstado;
+import com.argentinaprograma.tpintegrador.Modelo.Estados.ConfirmacionEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.EstadoIncidente;
+import com.argentinaprograma.tpintegrador.Modelo.Estados.IncidenteResueltoEstado;
+import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionClienteEstado;
+import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Incidente;
 import com.argentinaprograma.tpintegrador.Modelo.RRHH;
 import com.argentinaprograma.tpintegrador.Modelo.Servicio;
 import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +27,9 @@ import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
 public class TpIntegrador {
 
     public static void main(String[] args) {
+        
+        
+        
 
          //dar de alta tecnico RRHH
          Tecnico tecnico1 = new Tecnico("Juan", "Perez");
@@ -34,6 +43,8 @@ public class TpIntegrador {
          RRHH recursosHumanos =  new RRHH();
          recursosHumanos.altaTecnico(tecnico1);
          recursosHumanos.altaTecnico(tecnico2);
+         
+         List <Tecnico> todosLosTecnicos = recursosHumanos.getListaTecnico();
          
           //dar de alta clientes Comercial
           
@@ -51,28 +62,36 @@ public class TpIntegrador {
         
          //crear incidente
          //mesa de ayuda identifica cliente
-        Incidente incidente = new Incidente(new AltaInicialEstado());
-        incidente.getEstadoIncidente().identificarCliente(incidente, cliente1);
-        incidente.getEstadoIncidente().identificarCliente(incidente, cliente2);
-        
-        //mostrar estados clientes
-        
-        
-        
-        
-        
-        
-        //verificacion de servicios(estado Seleccion Cliente estado)
-        
-        
-        //asignacion tecnico (cambio a estado Seleccion tecnico estado)
-        
-        //notifiacion a cliente incidente asignado(asignadoESTADO)
-        
-        //nofificacion a tecnico nuevo incidente a resolver  (ConfirmacionEstado)
-        
-        //
-   
        
+         
+        Incidente incidente = new Incidente(new AltaInicialEstado());
+
+       incidente.getEstadoIncidente().identificarClientes(incidente, sectorComercial.obtenerTodosLosClientes());
+       
+       incidente.setEstadoIncidente(new SeleccionClienteEstado());
+       
+       
+       //verificar tecnicos disponibles y mostrar listado
+       incidente.verificarTecnicosDisponibles();
+       
+       
+       //operador selecciona uno de los tecnicos disponibles y el sistema le informa tiempo estimado de resolucion(en que se base el tiempo
+       //estimado de resolucion?
+       
+       incidente.setEstadoIncidente(new SeleccionTecnicoEstado());
+       incidente.seleccionarTecnico(tecnico1);
+       
+        
+       //confirmacion incidente
+       
+        incidente.setEstadoIncidente(new ConfirmacionEstado());
+        incidente.confirmarIncidente();
+        
+        
+        incidente.setEstadoIncidente(new IncidenteResueltoEstado());
+        
+  
     }
+    
+
 }

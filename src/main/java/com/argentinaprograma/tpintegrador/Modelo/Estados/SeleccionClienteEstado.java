@@ -7,11 +7,15 @@ package com.argentinaprograma.tpintegrador.Modelo.Estados;
 import com.argentinaprograma.tpintegrador.Modelo.Cliente;
 
 import com.argentinaprograma.tpintegrador.Modelo.Incidente;
+import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
+import java.util.List;
+import lombok.Data;
 
 /**
  *
  * @author Windows 10
  */
+@Data
 public class SeleccionClienteEstado implements EstadoIncidente {
     
      @Override
@@ -23,13 +27,17 @@ public class SeleccionClienteEstado implements EstadoIncidente {
     /*este estado incluye todo lo relacionado con la seleccion del servicio y dar una descripcion del problema*/
 
    @Override
-    public void seleccionarTipoServicioIncidente(Incidente indicidente, String tipoIncidente) {
-        System.out.println("Ingrese  datos del cliente antes de poder reportar incidente");
+    public void seleccionarTipoServicioIncidente(Incidente incidente, String tipoIncidente) {
+        System.out.println("Mostrar listado tecnicos disponibles para resolver el incidente");
+        System.out.println("tipo incidente " + incidente.getTipoProblema());
+        
+        //recorrer listado Tecnicos (supongo que se obtendrían de la base de datos)
+        //si tecncio tienen habilidad que coincide con tipo de incidente
+        
     }
 
   
 
-    @Override
     public void asginarTecnico() {
         System.out.println("Ingrese datos del cliente antes de poder asignar tecnico al incidente");
     }
@@ -47,6 +55,16 @@ public class SeleccionClienteEstado implements EstadoIncidente {
     @Override
     public void notificarCliente() {
         System.out.println("Ingrese datos del cliente antes de poder noficar al cliente que el incidente fue solucionado");
+    }
+
+    @Override
+    public void identificarClientes(Incidente incidente, List<Cliente> Listaclientes) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void asginarTecnico(Incidente incidente, Tecnico tecnico) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
    

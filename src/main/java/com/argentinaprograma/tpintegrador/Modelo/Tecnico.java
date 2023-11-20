@@ -15,10 +15,12 @@ public class Tecnico  extends Persona{
     
         
     private Set<Especialidad> especialidades;
+    private Set<TrabajosTecnico> trabajosPendientes;
 
     public Tecnico(String nombre, String apellido){
         super(nombre,apellido);
         this.especialidades =  new HashSet<>();
+        this.trabajosPendientes =  new HashSet<>();
     
     
     }
@@ -35,8 +37,9 @@ public class Tecnico  extends Persona{
         especialidades.remove(especialidad);
     }
 
-    public boolean tieneHabilidad(Especialidad especialidad) {
-        return especialidades.contains(especialidad);
+    public boolean tieneHabilidad(String problema) {
+        
+        return especialidades.contains(problema);
     }
 
     

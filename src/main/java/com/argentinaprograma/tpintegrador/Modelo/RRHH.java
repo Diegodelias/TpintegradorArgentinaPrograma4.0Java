@@ -23,10 +23,12 @@ public class RRHH extends Sector{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public void altaTecnico(Tecnico tecnico){
+    public List<Tecnico> altaTecnico(Tecnico tecnico){
         
         List<Tecnico> listaTecnico = this.listaTecnico;
         listaTecnico.add(tecnico);
+        
+        return listaTecnico;
         
        
     
@@ -39,6 +41,11 @@ public class RRHH extends Sector{
      
    public void bajaTecnico(Tecnico tecnico){
     
-    }
+    
+   }
+   
+   
+ 
+   
     
 }

@@ -7,6 +7,8 @@ package com.argentinaprograma.tpintegrador.Modelo.Estados;
 import com.argentinaprograma.tpintegrador.Modelo.Cliente;
 
 import com.argentinaprograma.tpintegrador.Modelo.Incidente;
+import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
+import java.util.List;
 
 /**
  *
@@ -26,9 +28,11 @@ public class SeleccionTecnicoEstado implements EstadoIncidente {
 
   
 
-    @Override
-    public void asginarTecnico() {
-        System.out.println("Ingrese datos del cliente antes de poder asignar tecnico al incidente");
+    public void asginarTecnico( Incidente incidente , Tecnico tecnico) {
+        System.out.println("TECNICO SELECCIONADO");
+        //CALCULAR TIEMPO ESTIMADO DE RESOLUCION
+        //NOTIFICAR AL CLIETNE
+     
     }
 
     @Override
@@ -46,7 +50,18 @@ public class SeleccionTecnicoEstado implements EstadoIncidente {
         System.out.println("Ingrese datos del cliente antes de poder noficar al cliente que el incidente fue solucionado");
     }
 
+    @Override
+    public void identificarClientes(Incidente incidente, List<Cliente> Listaclientes) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
+    public void asginarTecnico() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   public void asginarTecnicoSeleccionado(Incidente incidente , Tecnico tecnico) {
+        System.out.println("Ingrese datos del cliente antes de poder asignar tecnico al incidente");
+    }
     
     
 }

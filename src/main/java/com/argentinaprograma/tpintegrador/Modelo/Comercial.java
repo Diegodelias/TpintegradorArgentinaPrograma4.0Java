@@ -35,5 +35,8 @@ public class Comercial extends Sector {
    public void ModificacioCliente(Cliente cliente){
     
     }
-    
+      public List<Cliente> obtenerTodosLosClientes(){
+   
+       return this.listaCliente;
+   }
 }

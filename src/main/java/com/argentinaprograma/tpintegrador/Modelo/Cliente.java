@@ -4,6 +4,7 @@
  */
 package com.argentinaprograma.tpintegrador.Modelo;
 
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
 
@@ -13,15 +14,16 @@ public class Cliente extends Persona {
     private Set<Servicio> servicios;
     private String razonSocial;
     private String CUIT;
-    
+    private boolean notificadoIncidente;
     
     public Cliente(String nombre, String apellido) {
         super(nombre, apellido);
+        this.servicios = new HashSet<>();
     }
     
     
      public void agregarServicio(Servicio servicio) {
-        servicios.add(servicio);
+        this.servicios.add(servicio);
     }
 
     public void eliminarServicio(Servicio servicio) {
@@ -34,8 +36,8 @@ public class Cliente extends Persona {
 
     
     public void asignarNuevoServicio(Servicio servicio) {
-        agregarServicio(servicio);
-        System.out.println("Al cliente " + this.getNombre()+ " le ha sido asignado el servicio " + servicio);
+        this.agregarServicio(servicio);
+        System.out.println("El cliente " + this.getNombre()+ " cuenta con los siguiente servicios " + servicio);
     }
     
     
