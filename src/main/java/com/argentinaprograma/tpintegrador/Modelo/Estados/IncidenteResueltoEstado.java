@@ -40,7 +40,7 @@ public class IncidenteResueltoEstado implements EstadoIncidente {
     @Override
     public void resolucionIncidente() {
         System.out.println("Incidente resuelto ");
-        System.out.println("Enviar mail");
+        System.out.println("Enviar mail cliente incidente solucionado");
     }
 
     @Override

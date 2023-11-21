@@ -44,6 +44,8 @@ public class RRHH extends Sector{
     
    }
    
+   public void emitirReportes(){}
+   
    
  
    

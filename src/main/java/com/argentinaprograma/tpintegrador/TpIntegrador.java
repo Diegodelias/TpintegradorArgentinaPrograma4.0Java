@@ -89,6 +89,7 @@ public class TpIntegrador {
         
         
         incidente.setEstadoIncidente(new IncidenteResueltoEstado());
+        incidente.incidenteResuelto();
         
   
     }

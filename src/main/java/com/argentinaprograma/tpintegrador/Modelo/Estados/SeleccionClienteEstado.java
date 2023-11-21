@@ -29,7 +29,7 @@ public class SeleccionClienteEstado implements EstadoIncidente {
    @Override
     public void seleccionarTipoServicioIncidente(Incidente incidente, String tipoIncidente) {
         System.out.println("Mostrar listado tecnicos disponibles para resolver el incidente");
-        System.out.println("tipo incidente " + incidente.getTipoProblema());
+      
         
         //recorrer listado Tecnicos (supongo que se obtendrían de la base de datos)
         //si tecncio tienen habilidad que coincide con tipo de incidente
