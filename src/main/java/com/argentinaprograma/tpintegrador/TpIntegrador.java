@@ -4,41 +4,122 @@
 
 package com.argentinaprograma.tpintegrador;
 
-import com.argentinaprograma.tpintegrador.Modelo.Cliente;
+import com.argentinaprograma.tpintegrador.Entidades.Cliente;
+import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
+import com.argentinaprograma.tpintegrador.Entidades.Servicio;
+import com.argentinaprograma.tpintegrador.Entidades.ServicioEnum;
 import com.argentinaprograma.tpintegrador.Modelo.Comercial;
-import com.argentinaprograma.tpintegrador.Modelo.Especialidad;
+import com.argentinaprograma.tpintegrador.Modelo.EspecialidadEnum;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.AltaInicialEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.ConfirmacionEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.EstadoIncidente;
+
 import com.argentinaprograma.tpintegrador.Modelo.Estados.IncidenteResueltoEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionClienteEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Incidente;
-import com.argentinaprograma.tpintegrador.Modelo.RRHH;
-import com.argentinaprograma.tpintegrador.Modelo.Servicio;
-import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
+import com.argentinaprograma.tpintegrador.Entidades.RRHH;
+
+import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
+
+import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
+import com.argentinaprograma.tpintegrador.Servicios.ClienteService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
+import javax.persistence.Persistence;
+
+
 
 /**
  *
  * @author Windows 10
  */
 public class TpIntegrador {
+    
+      public static EntityManager getEntityManager(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("JPA_PU");
+        EntityManager manager = factory.createEntityManager();
+        return manager;
+    }
+
 
     public static void main(String[] args) {
+        //carga inicial  clientes
+        
+        List <Servicio> servicios = new ArrayList<>();
+        
+        Servicio servicio1 = new Servicio();
+        servicio1.setCategoria(ServicioEnum.SOPORTE_MAC_OS.name());
+        servicio1.setDescripcion("reinstalacion Mac Os");
+        servicio1.setComplejidadPuntaje(4);
+        Servicio servicio2 = new Servicio();
+        servicio2 = new Servicio();
+        servicio2.setCategoria(ServicioEnum.SOPORTE_WINDOWS.name());
+        servicio2.setDescripcion("actualizar licencia");
+        servicio2.setComplejidadPuntaje(2);
+        servicios.add(servicio1);
+        servicios.add(servicio2);
+        
+        Cliente cliente2 = new Cliente();
+         cliente2.setNombre("Juan");
+         cliente2.setApellido("Perez");
+     
+         ClienteService clienteService = new ClienteService(new ClienteRepository());
+        clienteService.crearCliente("juan", "PEREZ" ,servicios);
+        
+        
+        // carga inicial tecnicos
+        
+          List <Especialidad> especialidades1 = new ArrayList<>();
+          Especialidad especialidad1 = new Especialidad();
+          especialidad1.setNombre(EspecialidadEnum.LINUX_UBUNTU.name());
+          especialidad1.setDescripcion("especializado en Tango");
+          especialidad1.setEspecialidadPuntaje(5);
+          
+          especialidades1.add(especialidad1);
+          
+          Especialidad especialidad2 = new Especialidad();
+          especialidad2.setNombre(EspecialidadEnum.SAP.name());
+          especialidad1.setDescripcion("especializado en SAP");
+          especialidad1.setEspecialidadPuntaje(2);
+          
+          especialidades1.add(especialidad1);
+          especialidades1.add(especialidad2);
+          
+        
+        
+          RRHH recursosHumanos =  new RRHH();
+         recursosHumanos.altaTecnico("Manuel", "Gonzalez", especialidades1 );
+        
+      
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+/*
 
-         //dar de alta tecnico RRHH
-         Tecnico tecnico1 = new Tecnico("Juan", "Perez");
-         Tecnico tecnico2 = new Tecnico("Luis", "Muñoz");
-         tecnico1.asignarNuevaHabilidad(Especialidad.SAP);
-         tecnico1.asignarNuevaHabilidad(Especialidad.LINUX_UBUNTU);
-         tecnico2.agregarHabilidad(Especialidad.WINDOWS);
-         tecnico2.asignarNuevaHabilidad(Especialidad.SAP);
-         tecnico2.asignarNuevaHabilidad(Especialidad.TANGO);
+      
+         Tecnico tecnico1 = new Tecnico();
+         Tecnico tecnico2 = new Tecnico();
+         tecnico1.asignarNuevaHabilidad(EspecialidadEnum.SAP);
+         tecnico1.asignarNuevaHabilidad(EspecialidadEnum.LINUX_UBUNTU);
+         tecnico2.agregarHabilidad(EspecialidadEnum.WINDOWS);
+         tecnico2.asignarNuevaHabilidad(EspecialidadEnum.SAP);
+         tecnico2.asignarNuevaHabilidad(EspecialidadEnum.TANGO);
          
          RRHH recursosHumanos =  new RRHH();
          recursosHumanos.altaTecnico(tecnico1);
@@ -46,16 +127,27 @@ public class TpIntegrador {
          
          List <Tecnico> todosLosTecnicos = recursosHumanos.getListaTecnico();
          
+      
+         
           //dar de alta clientes Comercial
           
-          Cliente cliente1 = new Cliente("María","Mendez");
+        Cliente cliente1 = new Cliente("María","Mendez");
           cliente1.asignarNuevoServicio(Servicio.SOPORTE_SAP);
           cliente1.asignarNuevoServicio(Servicio.SOPORTE_TANGO);
           Cliente cliente2 = new Cliente("Jorge","Andrade");
-          cliente2.agregarServicio(Servicio.SOPORTE_WINDOWS);
+          cliente2.agregarServicio(Servicio.SOPORTE_WINDOWS);*/
+         
+    
+         
+          
+       
+    
+          
+          /*
+        
           
           Comercial sectorComercial = new Comercial ("Sector Comercial");
-          sectorComercial.altaCliente(cliente1);
+        //  sectorComercial.altaCliente(cliente1);
           sectorComercial.altaCliente(cliente2);
 
         //mesa de ayuda
@@ -64,7 +156,7 @@ public class TpIntegrador {
          //mesa de ayuda identifica cliente
        
          
-        Incidente incidente = new Incidente(new AltaInicialEstado());
+       Incidente incidente = new Incidente(new AltaInicialEstado());
 
        incidente.getEstadoIncidente().identificarClientes(incidente, sectorComercial.obtenerTodosLosClientes());
        
@@ -94,5 +186,7 @@ public class TpIntegrador {
   
     }
     
+*/
+}
 
 }

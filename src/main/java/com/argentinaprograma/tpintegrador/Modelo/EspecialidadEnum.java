@@ -8,7 +8,7 @@ package com.argentinaprograma.tpintegrador.Modelo;
  *
  * @author Windows 10
  */
-public enum Especialidad {
+public enum EspecialidadEnum {
     SAP,
     TANGO,
     WINDOWS,

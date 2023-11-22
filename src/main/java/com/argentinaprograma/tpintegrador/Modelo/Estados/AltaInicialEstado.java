@@ -2,10 +2,10 @@ package com.argentinaprograma.tpintegrador.Modelo.Estados;
 
 
 
-import com.argentinaprograma.tpintegrador.Modelo.Cliente;
+import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 
 import com.argentinaprograma.tpintegrador.Modelo.Incidente;
-import com.argentinaprograma.tpintegrador.Modelo.Tecnico;
+import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import java.util.List;
 import lombok.Data;
 

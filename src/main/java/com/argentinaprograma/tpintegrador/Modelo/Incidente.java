@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.argentinaprograma.tpintegrador.Modelo;
+import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
+import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.AltaInicialEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.EstadoIncidente;

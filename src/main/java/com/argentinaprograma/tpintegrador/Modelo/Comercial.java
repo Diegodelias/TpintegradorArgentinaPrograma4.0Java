@@ -4,6 +4,7 @@
  */
 package com.argentinaprograma.tpintegrador.Modelo;
 
+import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
