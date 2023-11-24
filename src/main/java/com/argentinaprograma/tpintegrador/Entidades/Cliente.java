@@ -10,10 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
@@ -30,8 +33,14 @@ public class Cliente  {
     private String nombre;
     private String apellido;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="cliente_id", referencedColumnName="id")
+    /*@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="cliente_id", referencedColumnName="id")*/
+     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "cliente_servicio",
+        joinColumns = @JoinColumn(name = "cliente_id"),
+        inverseJoinColumns = @JoinColumn(name = "servicio_id")
+    )
     private Set<Servicio> servicios = new HashSet<>();
     private String razonSocial;
     private String CUIT;
@@ -51,7 +60,7 @@ public class Cliente  {
 
     
      public void agregarServicio(Servicio servicio) {
-         System.out.println("la concha de tu madreeeee " + servicio.getDescripcion());
+     
          servicios.add(servicio);
     }
 

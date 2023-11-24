@@ -8,10 +8,13 @@ import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
 import com.argentinaprograma.tpintegrador.Entidades.Servicio;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
+import com.argentinaprograma.tpintegrador.Modelo.EspecialidadEnum;
 
 import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
 import com.argentinaprograma.tpintegrador.Repositorios.TecnicoRepository;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -24,19 +27,23 @@ public class TecnicoServicio {
         this.tecnicoRepository = tecnicoRepository;
     }
     
-        public void crearTecnico(String nombre , String apellido , List<Especialidad> especialidades) {
-        
-          Tecnico tecnico = new Tecnico();
-          tecnico.setNombre(nombre);
-          tecnico.setApellido(apellido);
-          
-       //   System.out.println("SERVICIO SIZE " + servicios.size());
-         especialidades.forEach(e -> tecnico.asignarNuevaHabilidad(e));
-        //  servicios.forEach(e -> System.out.println(e.getCategoria()));
-         
-              
-        tecnicoRepository.crearTecnico(tecnico);
-     
-    }
     
+    
+    public void crearTecnico(Scanner scanner){
+     
+        System.out.println("Ingreso el nombre del tecnico");
+        String nombreTecnico = scanner.next();
+        System.out.println("Ingreso apellido tecnico");
+        String apellido = scanner.next(); 
+        
+        Tecnico tecnico = new Tecnico();
+        tecnico.setNombre(nombreTecnico);
+        tecnico.setApellido(apellido);
+        
+         tecnicoRepository.crearTecnico(tecnico);
+        
+        
+    };
+    
+ 
 }
