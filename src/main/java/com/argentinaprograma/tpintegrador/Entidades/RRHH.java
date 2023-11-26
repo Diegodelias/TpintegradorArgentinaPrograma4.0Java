@@ -5,7 +5,6 @@
 package com.argentinaprograma.tpintegrador.Entidades;
 
 
-import com.argentinaprograma.tpintegrador.Modelo.EspecialidadEnum;
 import com.argentinaprograma.tpintegrador.Repositorios.TecnicoRepository;
 import com.argentinaprograma.tpintegrador.Servicios.ClienteServicio;
 import com.argentinaprograma.tpintegrador.Servicios.TecnicoServicio;

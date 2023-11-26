@@ -5,7 +5,6 @@
 package com.argentinaprograma.tpintegrador.Entidades;
 
 
-import com.argentinaprograma.tpintegrador.Modelo.EspecialidadEnum;
 import com.argentinaprograma.tpintegrador.Modelo.Persona;
 import com.argentinaprograma.tpintegrador.Modelo.TrabajosTecnico;
 import java.util.Set;

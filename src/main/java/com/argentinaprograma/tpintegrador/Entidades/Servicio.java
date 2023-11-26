@@ -32,9 +32,8 @@ public class Servicio {
     private int complejidadPuntaje;
    
     
-       @ManyToOne(fetch = FetchType.LAZY)
-       @JoinColumn(name = "cliente_id")
-       private Cliente cliente;
+  
+   //private Cliente cliente;
    
     
 }

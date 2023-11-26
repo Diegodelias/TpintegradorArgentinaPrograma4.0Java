@@ -9,7 +9,7 @@ import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
 import com.argentinaprograma.tpintegrador.Entidades.Servicio;
 import com.argentinaprograma.tpintegrador.Entidades.ServicioEnum;
 import com.argentinaprograma.tpintegrador.Modelo.Comercial;
-import com.argentinaprograma.tpintegrador.Modelo.EspecialidadEnum;
+import com.argentinaprograma.tpintegrador.Entidades.EspecialidadEnum;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.AltaInicialEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.ConfirmacionEstado;
 
@@ -72,7 +72,7 @@ public class TpIntegrador {
             System.out.println("4. Mostrar Técnicos");
             System.out.println("5. Registrar Especialidad");
             System.out.println("6. Asignar  Especialidad a tecnico");
-            System.out.println("7. Registrar Servicio en cliente");
+            System.out.println("7. Asignar Servicio en cliente");
             System.out.println("8. Registrar Incidente");
             System.out.println("0. Salir");
             System.out.print("Ingrese su opción: ");

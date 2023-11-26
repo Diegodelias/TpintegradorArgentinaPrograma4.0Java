@@ -75,13 +75,18 @@ public class ClienteServicio {
             System.out.println("ingresar descripcion del servicio");
             String descripcion = scanner.next();
             System.out.println("ingresar puntaje complejidad del servicio");
-            int pcomplejidad = scanner.nextInt();;
+            int pcomplejidad = scanner.nextInt();
             Servicio servicio = new Servicio();
             servicio.setCategoria(categoria);
             servicio.setDescripcion(descripcion);
             servicio.setComplejidadPuntaje(0);
-           cliente.forEach(cli -> { servicio.setCliente(cli);});}
-            System.out.println("Clientes SIZE " + clienteRepository.seleccionarClientePorDni(dni).size() );
+           cliente.forEach(cli -> { cli.agregarServicio(servicio);
+
+           clienteRepository.actualizarCliente(cli);});}
+       
+
+           
+           
          }
     
 }

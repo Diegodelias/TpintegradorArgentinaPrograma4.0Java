@@ -43,7 +43,8 @@ public class Cliente  {
         inverseJoinColumns = @JoinColumn(name = "servicio_id")
     )*/
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cliente_id")
     private Set<Servicio> servicios = new HashSet<>();
     private String razonSocial;
     private String CUIT;
@@ -56,6 +57,7 @@ public class Cliente  {
      public void agregarServicio(Servicio servicio) {
      
          servicios.add(servicio);
+       //  servicio.setCliente(this);
     }
 
     public void eliminarServicio(Servicio servicio) {
