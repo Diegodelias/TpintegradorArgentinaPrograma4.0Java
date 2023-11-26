@@ -8,7 +8,7 @@ import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
 import com.argentinaprograma.tpintegrador.Entidades.Servicio;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
-import com.argentinaprograma.tpintegrador.Entidades.EspecialidadEnum;
+import com.argentinaprograma.tpintegrador.Entidades.CategoriasServicio;
 
 import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
 import com.argentinaprograma.tpintegrador.Repositorios.EspecialidadRepository;

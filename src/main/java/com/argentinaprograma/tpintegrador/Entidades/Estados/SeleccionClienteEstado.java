@@ -1,32 +1,42 @@
-package com.argentinaprograma.tpintegrador.Modelo.Estados;
-
-import com.argentinaprograma.tpintegrador.Entidades.Cliente;
-import com.argentinaprograma.tpintegrador.Entidades.Incidente;
-import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
-import java.util.List;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package com.argentinaprograma.tpintegrador.Entidades.Estados;
 
+import com.argentinaprograma.tpintegrador.Entidades.Cliente;
+
+import com.argentinaprograma.tpintegrador.Entidades.Incidente;
+import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
+import java.util.List;
+import lombok.Data;
 
 /**
  *
  * @author Windows 10
  */
-public class IncidenteResueltoEstado implements EstadoIncidente {
+@Data
+public class SeleccionClienteEstado implements EstadoIncidente {
     
-    @Override
+     @Override
     public void identificarCliente(Incidente incidente, Cliente cliente) {
-               System.out.println("Ingresa datos del cliente");
+             System.out.println("Ingresa datos del cliente");
     }
     
-       @Override
-    public void seleccionarTipoServicioIncidente(Incidente indicidente, String tipoIncidente) {
-        System.out.println("Ingrese  datos del cliente antes de poder reportar incidente");
+    
+    /*este estado incluye todo lo relacionado con la seleccion del servicio y dar una descripcion del problema*/
+
+   @Override
+    public void seleccionarTipoServicioIncidente(Incidente incidente, String tipoIncidente) {
+        System.out.println("Mostrar listado tecnicos disponibles para resolver el incidente");
+      
+        
+        //recorrer listado Tecnicos (supongo que se obtendrían de la base de datos)
+        //si tecncio tienen habilidad que coincide con tipo de incidente
+        
     }
 
+  
 
     public void asginarTecnico() {
         System.out.println("Ingrese datos del cliente antes de poder asignar tecnico al incidente");
@@ -39,8 +49,7 @@ public class IncidenteResueltoEstado implements EstadoIncidente {
 
     @Override
     public void resolucionIncidente() {
-        System.out.println("Incidente resuelto ");
-        System.out.println("Enviar mail cliente incidente solucionado");
+        System.out.println("Ingrese datos del cliente antes de poder marcar incidente como solucionado ");
     }
 
     @Override
@@ -58,6 +67,5 @@ public class IncidenteResueltoEstado implements EstadoIncidente {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-
-    
+   
 }

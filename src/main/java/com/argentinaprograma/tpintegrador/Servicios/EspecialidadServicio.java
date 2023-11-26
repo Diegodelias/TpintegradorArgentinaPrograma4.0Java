@@ -4,6 +4,7 @@
  */
 package com.argentinaprograma.tpintegrador.Servicios;
 
+import com.argentinaprograma.tpintegrador.Entidades.CategoriasServicio;
 import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
@@ -27,9 +28,9 @@ public class EspecialidadServicio {
      public void crearEspecialidad(Scanner scanner){
          
         System.out.println("Ingreso el nombre especialidad");
-        String nombreEspecialidad = scanner.next();
+        String nombreEspecialidad =  mostrarMenuCategorias().name();
         System.out.println("Ingreso descripcion");
-        String descripcion = scanner.nextLine(); 
+        String descripcion = scanner.next(); 
         System.out.println("Ingreso puntaje");
         int puntaje = 0;
         
@@ -54,6 +55,54 @@ public class EspecialidadServicio {
          
          
      }
+     
+      public void crearIncidente(Scanner scanner){
+          
+          
+      }
+     
+      public CategoriasServicio mostrarMenuCategorias(){
+           Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Seleccionar Categoria:");
+        int optionNumber = 1;
+        for (CategoriasServicio servicio : CategoriasServicio.values()) {
+            System.out.println(optionNumber + ". " + servicio);
+            optionNumber++;
+        }
+  
+        
+        
+        System.out.print("Ingresar numero opcion seleccionada: ");
+        int usuarioSeleccion = scanner.nextInt();
+
+      return  procesarSeleccionUsuario(usuarioSeleccion);
+    
+    
+    }
+    
+    
+    public CategoriasServicio procesarSeleccionUsuario(int seleccion){
+        
+        CategoriasServicio valorSeleccionado = null;
+        if (seleccion >= 1 && seleccion <= CategoriasServicio.values().length) {
+            valorSeleccionado = CategoriasServicio.values()[seleccion - 1];
+            System.out.println("Opcion seleccionada numero : " + seleccion);
+            System.out.println("valor opcion: " + valorSeleccionado);
+        } else if (seleccion == 0) {
+            System.out.println("Saliendo...");
+            return valorSeleccionado;
+        } else {
+            System.out.println("La opcion seleccionada es invalida");
+        }
+    
+     
+         return valorSeleccionado;
+
+    
+    
+    }
+
      
     
 }

@@ -1,12 +1,22 @@
-package com.argentinaprograma.tpintegrador.Modelo.Estados;
+package com.argentinaprograma.tpintegrador.Entidades;
 
 
 
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.EstadoIncidente;
 
 import com.argentinaprograma.tpintegrador.Entidades.Incidente;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import lombok.Data;
 
 /*
@@ -14,13 +24,23 @@ import lombok.Data;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-
 @Data
+@Entity
+@Table(name = "EstadoInicial")
 public class AltaInicialEstado  implements EstadoIncidente{
     
    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+     
+   
+   
+  
     
     
+    // @OneToOne(mappedBy = "estadoIncidente")
+   //  private Incidente incidente;
     //en listado clientes base de datos obtener todos los clientes
     
     /*

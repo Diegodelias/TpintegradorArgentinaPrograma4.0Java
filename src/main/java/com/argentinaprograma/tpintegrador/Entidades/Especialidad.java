@@ -4,7 +4,9 @@
  */
 package com.argentinaprograma.tpintegrador.Entidades;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -31,7 +33,7 @@ public class Especialidad {
  
     
     @ManyToMany(mappedBy = "especialidades")
-    private Set<Tecnico> tecnicos = new HashSet<>();
+    private List<Tecnico> tecnicos = new ArrayList<>();
    
      
       public void agregarTecnico(Tecnico tecnico) {

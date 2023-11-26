@@ -4,14 +4,17 @@
  */
 package com.argentinaprograma.tpintegrador.Entidades;
 
+import com.argentinaprograma.tpintegrador.Entidades.Incidente;
+import lombok.Data;
+
 /**
  *
  * @author Windows 10
  */
-public enum EspecialidadEnum {
-    SAP,
-    TANGO,
-    WINDOWS,
-    MAC_OS,
-    LINUX_UBUNTU
- }
+@Data
+public class TrabajosTecnico {
+    private String FechaResolucion;
+    private  Incidente infoIncidente;
+    private Boolean confirmado;
+    
+}

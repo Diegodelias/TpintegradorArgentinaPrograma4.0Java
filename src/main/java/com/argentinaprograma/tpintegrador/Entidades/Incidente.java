@@ -5,26 +5,51 @@
 package com.argentinaprograma.tpintegrador.Entidades;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.AltaInicialEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.EstadoIncidente;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.SeleccionTecnicoEstado;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.EstadoIncidente;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import lombok.Data;
 
-/**
- *
- *
- */
+@Entity
+@Table(name = "incidente")
 @Data
 public class Incidente {
     
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+ 
     private EstadoIncidente estadoIncidente;
-    private String servicio;
+    
+    /*@OneToOne
+    @JoinColumn(name = "altaIncialEstado_id")*/
+
+    private AltaInicialEstado altaInicial;
+    private Servicio servicio;
     private String descripcionProblema;
     private String tipoProblema;
     private Boolean resuelto;
     
-
     
+    private Cliente Cliente;
+    private Tecnico TecnicoAsignado;
+    
+
+    public Incidente(){
+    
+    
+    }
     //al instanciar desde el contructor Iniciar con alta Inicial estado
     public Incidente(AltaInicialEstado estadoInicialProceso){
         this.estadoIncidente = estadoInicialProceso;

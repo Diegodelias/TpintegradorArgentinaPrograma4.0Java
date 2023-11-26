@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.argentinaprograma.tpintegrador.Modelo.Estados;
+package com.argentinaprograma.tpintegrador.Entidades.Estados;
 
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 
@@ -14,30 +14,27 @@ import java.util.List;
  *
  * @author Windows 10
  */
-public class SeleccionTecnicoEstado implements EstadoIncidente {
+public class ConfirmacionEstado implements EstadoIncidente{
     
-        @Override
+    /*contiene toda la logica para confirmar el incidente e informar al cliente*/
+
+    @Override
     public void identificarCliente(Incidente incidente, Cliente cliente) {
-             System.out.println("Ingresa datos del cliente");
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-     @Override
+   @Override
     public void seleccionarTipoServicioIncidente(Incidente indicidente, String tipoIncidente) {
         System.out.println("Ingrese  datos del cliente antes de poder reportar incidente");
     }
 
-  
 
-    public void asginarTecnico( Incidente incidente , Tecnico tecnico) {
-        System.out.println("TECNICO SELECCIONADO");
-        //CALCULAR TIEMPO ESTIMADO DE RESOLUCION
-        //NOTIFICAR AL CLIETNE
-     
+    public void asginarTecnico() {
+        System.out.println("Ingrese datos del cliente antes de poder asignar tecnico al incidente");
     }
 
     @Override
     public void notificarTecnico() {
-        System.out.println("Ingrese datos del cliente antes de poder notificar tecnico");
+        System.out.println("Al confirmarse el  incidente le sistema debe enviar una notificacion al tecnico informandole que tiene un nuevo incidente para resolver");
     }
 
     @Override
@@ -55,13 +52,9 @@ public class SeleccionTecnicoEstado implements EstadoIncidente {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void asginarTecnico() {
+    @Override
+    public void asginarTecnico(Incidente incidente, Tecnico tecnico) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-   public void asginarTecnicoSeleccionado(Incidente incidente , Tecnico tecnico) {
-        System.out.println("Ingrese datos del cliente antes de poder asignar tecnico al incidente");
-    }
-    
     
 }

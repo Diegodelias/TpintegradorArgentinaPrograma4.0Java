@@ -4,6 +4,7 @@
  */
 package com.argentinaprograma.tpintegrador.Servicios;
 
+import com.argentinaprograma.tpintegrador.Entidades.CategoriasServicio;
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Entidades.Servicio;
 import com.argentinaprograma.tpintegrador.Entidades.ServicioEnum;
@@ -71,7 +72,8 @@ public class ClienteServicio {
        
        if(dni != null) {
             System.out.println("ingresar Categoria del Servicio");
-            String categoria = scanner.next();
+            
+            String categoria = mostrarMenuCategorias().name();
             System.out.println("ingresar descripcion del servicio");
             String descripcion = scanner.next();
             System.out.println("ingresar puntaje complejidad del servicio");
@@ -79,7 +81,7 @@ public class ClienteServicio {
             Servicio servicio = new Servicio();
             servicio.setCategoria(categoria);
             servicio.setDescripcion(descripcion);
-            servicio.setComplejidadPuntaje(0);
+            servicio.setComplejidadPuntaje(pcomplejidad);
            cliente.forEach(cli -> { cli.agregarServicio(servicio);
 
            clienteRepository.actualizarCliente(cli);});}
@@ -88,5 +90,62 @@ public class ClienteServicio {
            
            
          }
+    
+    
+    public CategoriasServicio mostrarMenuCategorias(){
+           Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Seleccionar Categoria:");
+        int optionNumber = 1;
+        for (CategoriasServicio servicio : CategoriasServicio.values()) {
+            System.out.println(optionNumber + ". " + servicio);
+            optionNumber++;
+        }
+  
+        
+        
+        System.out.print("Ingresar numero opcion seleccionada: ");
+        int usuarioSeleccion = scanner.nextInt();
+
+      return  procesarSeleccionUsuario(usuarioSeleccion);
+    
+    
+    }
+    
+    
+    public CategoriasServicio procesarSeleccionUsuario(int seleccion){
+        
+        CategoriasServicio valorSeleccionado = null;
+        if (seleccion >= 1 && seleccion <= CategoriasServicio.values().length) {
+            valorSeleccionado = CategoriasServicio.values()[seleccion - 1];
+            System.out.println("Opcion seleccionada numero : " + seleccion);
+            System.out.println("valor opcion: " + valorSeleccionado);
+        } else if (seleccion == 0) {
+            System.out.println("Saliendo...");
+            return valorSeleccionado;
+        } else {
+            System.out.println("La opcion seleccionada es invalida");
+        }
+    
+     
+         return valorSeleccionado;
+
+    
+    
+    }
+    
+    
+    public void mostrarServiciosContratados(Scanner scanner){
+        
+        System.out.println("Ingresar razon social cliente");
+        String razonSocialCliente = scanner.next();
+        System.out.println("Ingresar cuit cliente");
+        String cuitCliente = scanner.next();
+        
+        clienteRepository.serviciosContradosPorCliente(razonSocialCliente, cuitCliente);
+        
+    
+    
+    }
     
 }

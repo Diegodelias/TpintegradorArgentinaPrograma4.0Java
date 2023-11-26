@@ -4,8 +4,10 @@
  */
 package com.argentinaprograma.tpintegrador.Repositorios;
 
+import com.argentinaprograma.tpintegrador.Entidades.CategoriasServicio;
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
+import com.argentinaprograma.tpintegrador.Entidades.Servicio;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import static com.argentinaprograma.tpintegrador.TpIntegrador.getEntityManager;
 import java.util.List;
@@ -91,10 +93,47 @@ public class TecnicoRepository {
         //  em.merge(TecnicoSeleccionado);
         TecnicoSeleccionado.getEspecialidades().add(EspecialidadSeleccionada);
 
-        em.merge(TecnicoSeleccionado);
+        em.persist(TecnicoSeleccionado);
         // em.persist(EspecialidadSeleccionada);
 
         tx.commit();
+
+    }
+
+    public List<Tecnico> encontrarTecnicoPorId(Long tecnicoId) {
+
+        /*  Query query = em.createQuery("SELECT s FROM Servicio s WHERE s.cliente.id = :clienteId");
+        query.setParameter("clienteId", clienteId);
+
+        return query.getResultList();*/
+ /* String servicioQuery = "SELECT s FROM Servicio s WHERE s.cliente.id = :clienteId";
+        List<Servicio> servicios = em.createQuery(servicioQuery, Servicio.class)
+                .setParameter("clienteId", clienteId)
+                .getResultList();*/
+        TypedQuery<Tecnico> query = em.createQuery(
+                "SELECT t FROM Tecnico t WHERE t.id = :tecnicoId", Tecnico.class);
+        query.setParameter("tecnicoId", tecnicoId);
+        List<Tecnico> tecnicos = query.getResultList();
+
+        return tecnicos;
+
+    }
+
+    public void actualizarTecnico(Tecnico tecnico) {
+
+        try {
+            em.getTransaction().begin();
+
+            em.merge(tecnico);
+
+            em.getTransaction().commit();
+            System.out.println("Tecnico actualizado correctamente.");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            //  em.close();
+        }
 
     }
 

@@ -8,24 +8,26 @@ import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Entidades.Especialidad;
 import com.argentinaprograma.tpintegrador.Entidades.Servicio;
 import com.argentinaprograma.tpintegrador.Entidades.ServicioEnum;
-import com.argentinaprograma.tpintegrador.Modelo.Comercial;
-import com.argentinaprograma.tpintegrador.Entidades.EspecialidadEnum;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.AltaInicialEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.ConfirmacionEstado;
 
-import com.argentinaprograma.tpintegrador.Modelo.Estados.IncidenteResueltoEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionClienteEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;
+import com.argentinaprograma.tpintegrador.Entidades.CategoriasServicio;
+import com.argentinaprograma.tpintegrador.Entidades.AltaInicialEstado;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.ConfirmacionEstado;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.IncidenteResueltoEstado;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.SeleccionClienteEstado;
+import com.argentinaprograma.tpintegrador.Entidades.Estados.SeleccionTecnicoEstado;
 import com.argentinaprograma.tpintegrador.Entidades.Incidente;
-import com.argentinaprograma.tpintegrador.Entidades.RRHH;
+
 
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 
 import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
 import com.argentinaprograma.tpintegrador.Repositorios.EspecialidadRepository;
+import com.argentinaprograma.tpintegrador.Repositorios.IncidenteRepository;
+import com.argentinaprograma.tpintegrador.Repositorios.ServicioRepository;
 import com.argentinaprograma.tpintegrador.Repositorios.TecnicoRepository;
 import com.argentinaprograma.tpintegrador.Servicios.ClienteServicio;
 import com.argentinaprograma.tpintegrador.Servicios.EspecialidadServicio;
+import com.argentinaprograma.tpintegrador.Servicios.IncidenteServicio;
 import com.argentinaprograma.tpintegrador.Servicios.TecnicoServicio;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +58,12 @@ public class TpIntegrador {
         TecnicoServicio tecnicoServicio = new TecnicoServicio(new TecnicoRepository());
         ClienteServicio clienteServicio = new ClienteServicio(new ClienteRepository());
         EspecialidadServicio especialidadServicio = new EspecialidadServicio(new EspecialidadRepository());
+        IncidenteServicio incidenteServicio = new IncidenteServicio(new IncidenteRepository(), new ServicioRepository(),new ClienteRepository(),new TecnicoRepository());
 
        
         
          Scanner scanner = new Scanner(System.in);
+         scanner.useDelimiter("\n");
          
          int opcion;
          long nroCliente;
@@ -73,7 +77,8 @@ public class TpIntegrador {
             System.out.println("5. Registrar Especialidad");
             System.out.println("6. Asignar  Especialidad a tecnico");
             System.out.println("7. Asignar Servicio en cliente");
-            System.out.println("8. Registrar Incidente");
+            System.out.println("8. Mostrar Servicios Contratados por cliente");
+            System.out.println("9. Crear Incidente");
             System.out.println("0. Salir");
             System.out.print("Ingrese su opción: ");
 
@@ -109,6 +114,22 @@ public class TpIntegrador {
                      //       pc.buscarClienteId(nroCliente)
                    // );
                     break;
+                    
+                     
+                case 8:
+                    clienteServicio.mostrarServiciosContratados(scanner);
+                   // ic.agregarIncidente(
+                     //       pc.buscarClienteId(nroCliente)
+                   // );
+                    break;
+                    
+                case 9:
+                    incidenteServicio.crearIncidente(scanner);
+                   // ic.agregarIncidente(
+                     //       pc.buscarClienteId(nroCliente)
+                   // );
+                    break;
+                    
                 case 0:
                     System.out.println("Saliendo del programa. ¡Hasta luego!");
                     break;

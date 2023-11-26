@@ -1,28 +1,28 @@
+package com.argentinaprograma.tpintegrador.Entidades.Estados;
+
+import com.argentinaprograma.tpintegrador.Entidades.Cliente;
+import com.argentinaprograma.tpintegrador.Entidades.Incidente;
+import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
+import java.util.List;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.argentinaprograma.tpintegrador.Modelo.Estados;
 
-import com.argentinaprograma.tpintegrador.Entidades.Cliente;
-
-import com.argentinaprograma.tpintegrador.Entidades.Incidente;
-import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
-import java.util.List;
 
 /**
  *
  * @author Windows 10
  */
-public class ConfirmacionEstado implements EstadoIncidente{
+public class IncidenteResueltoEstado implements EstadoIncidente {
     
-    /*contiene toda la logica para confirmar el incidente e informar al cliente*/
-
     @Override
     public void identificarCliente(Incidente incidente, Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+               System.out.println("Ingresa datos del cliente");
     }
-   @Override
+    
+       @Override
     public void seleccionarTipoServicioIncidente(Incidente indicidente, String tipoIncidente) {
         System.out.println("Ingrese  datos del cliente antes de poder reportar incidente");
     }
@@ -34,12 +34,13 @@ public class ConfirmacionEstado implements EstadoIncidente{
 
     @Override
     public void notificarTecnico() {
-        System.out.println("Al confirmarse el  incidente le sistema debe enviar una notificacion al tecnico informandole que tiene un nuevo incidente para resolver");
+        System.out.println("Ingrese datos del cliente antes de poder notificar tecnico");
     }
 
     @Override
     public void resolucionIncidente() {
-        System.out.println("Ingrese datos del cliente antes de poder marcar incidente como solucionado ");
+        System.out.println("Incidente resuelto ");
+        System.out.println("Enviar mail cliente incidente solucionado");
     }
 
     @Override
@@ -56,5 +57,7 @@ public class ConfirmacionEstado implements EstadoIncidente{
     public void asginarTecnico(Incidente incidente, Tecnico tecnico) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
     
 }

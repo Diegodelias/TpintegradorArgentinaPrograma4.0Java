@@ -4,9 +4,11 @@
  */
 package com.argentinaprograma.tpintegrador.Entidades;
 
-import com.argentinaprograma.tpintegrador.Modelo.Persona;
+
+import java.util.ArrayList;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -45,10 +47,14 @@ public class Cliente  {
     
      @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cliente_id")
-    private Set<Servicio> servicios = new HashSet<>();
+    private  List<Servicio> servicios =new ArrayList<>();
     private String razonSocial;
     private String CUIT;
     private boolean notificadoIncidente;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cliente_id")
+    private  List<Incidente> incidentes = new ArrayList<>();
     
     
 
@@ -59,6 +65,12 @@ public class Cliente  {
          servicios.add(servicio);
        //  servicio.setCliente(this);
     }
+     
+     public void agregarIncidente(Incidente incidente){
+         incidentes.add(incidente);
+    
+     
+     }
 
     public void eliminarServicio(Servicio servicio) {
         servicios.remove(servicio);

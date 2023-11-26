@@ -5,11 +5,12 @@
 package com.argentinaprograma.tpintegrador.Entidades;
 
 
-import com.argentinaprograma.tpintegrador.Modelo.Persona;
-import com.argentinaprograma.tpintegrador.Modelo.TrabajosTecnico;
+
+import java.util.ArrayList;
 import java.util.Set;
 import lombok.Data;
 import java.util.HashSet;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -45,8 +47,19 @@ public class Tecnico  {
             joinColumns = @JoinColumn(name = "tecnico_id"),
             inverseJoinColumns = @JoinColumn(name = "especialidad_id")
     )
-    private Set<Especialidad> especialidades = new HashSet<>();
+    private List<Especialidad> especialidades = new ArrayList<>();
     
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "tecnico_id")
+    private  List<Incidente> incidentes =new ArrayList<>();
+    
+    
+  public void agregarIncidente(Incidente incidente){
+         incidentes.add(incidente);
+    
+     
+     }
     
     
     
@@ -94,4 +107,9 @@ public class Tecnico  {
         agregarEspecialidad(nuevaHabilidad);
         System.out.println("Al tecnico " + this.getNombre()+ " le ha sisdo asinada la Habilidad " + nuevaHabilidad);
     }
+    
+    
+    
+    
+    
 }
