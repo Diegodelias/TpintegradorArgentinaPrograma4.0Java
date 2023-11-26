@@ -30,8 +30,17 @@ public class Especialidad {
     private int especialidadPuntaje;
  
     
-     @ManyToMany(mappedBy = "especialidades", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "especialidades")
     private Set<Tecnico> tecnicos = new HashSet<>();
    
+     
+      public void agregarTecnico(Tecnico tecnico) {
+        tecnicos.add(tecnico);
+        tecnico.getEspecialidades().add(this); }
+      
+       public void removerTecnico(Tecnico tecnico) {
+        tecnicos.remove(tecnico);
+        tecnico.getEspecialidades().remove(this);
+    }
     
 }

@@ -4,6 +4,7 @@
  */
 package com.argentinaprograma.tpintegrador.Modelo;
 
+import com.argentinaprograma.tpintegrador.Entidades.Incidente;
 import lombok.Data;
 
 @Data

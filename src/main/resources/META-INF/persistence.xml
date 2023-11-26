@@ -9,6 +9,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
         <class>com.argentinaprograma.tpintegrador.Entidades.Servicio</class>
        <class>com.argentinaprograma.tpintegrador.Entidades.Tecnico</class>
        <class>com.argentinaprograma.tpintegrador.Entidades.Especialidad</class>
+       <class>com.argentinaprograma.tpintegrador.Entidades.Servicio</class>
    
 
         <properties>

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.argentinaprograma.tpintegrador.Modelo;
+package com.argentinaprograma.tpintegrador.Entidades;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;

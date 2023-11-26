@@ -16,14 +16,16 @@ import com.argentinaprograma.tpintegrador.Modelo.Estados.ConfirmacionEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.IncidenteResueltoEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionClienteEstado;
 import com.argentinaprograma.tpintegrador.Modelo.Estados.SeleccionTecnicoEstado;
-import com.argentinaprograma.tpintegrador.Modelo.Incidente;
+import com.argentinaprograma.tpintegrador.Entidades.Incidente;
 import com.argentinaprograma.tpintegrador.Entidades.RRHH;
 
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 
 import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
+import com.argentinaprograma.tpintegrador.Repositorios.EspecialidadRepository;
 import com.argentinaprograma.tpintegrador.Repositorios.TecnicoRepository;
 import com.argentinaprograma.tpintegrador.Servicios.ClienteServicio;
+import com.argentinaprograma.tpintegrador.Servicios.EspecialidadServicio;
 import com.argentinaprograma.tpintegrador.Servicios.TecnicoServicio;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,8 @@ public class TpIntegrador {
         
         TecnicoServicio tecnicoServicio = new TecnicoServicio(new TecnicoRepository());
         ClienteServicio clienteServicio = new ClienteServicio(new ClienteRepository());
+        EspecialidadServicio especialidadServicio = new EspecialidadServicio(new EspecialidadRepository());
+
        
         
          Scanner scanner = new Scanner(System.in);
@@ -67,7 +71,9 @@ public class TpIntegrador {
             System.out.println("3. Mostrar Clientes");
             System.out.println("4. Mostrar Técnicos");
             System.out.println("5. Registrar Especialidad");
-            System.out.println("6. Registrar Incidente");
+            System.out.println("6. Asignar  Especialidad a tecnico");
+            System.out.println("7. Registrar Servicio en cliente");
+            System.out.println("8. Registrar Incidente");
             System.out.println("0. Salir");
             System.out.print("Ingrese su opción: ");
 
@@ -84,15 +90,21 @@ public class TpIntegrador {
                     clienteServicio.traerTodosLosClientes();
                     break;
                 case 4:
-                   // mostrarTecnicos();
+                    //tecnicoServicio.traerTodosLosTecnicos();
+                    tecnicoServicio.tecnicosConEspecialidades();
                     break;
                 case 5:
-                   // ec.agregarEspecialidad();
-                    break;
+                    especialidadServicio.crearEspecialidad(scanner);
+                     break;
                 case 6:
-                   // pc.mostrarClientes();
-                    System.out.println("Ingrese el numero del cliente");
-                    nroCliente = scanner.nextLong();
+                    tecnicoServicio.asignarEspecialidadTecnico(scanner);
+                   // ic.agregarIncidente(
+                     //       pc.buscarClienteId(nroCliente)
+                   // );
+                    break;
+                 
+                case 7:
+                    clienteServicio.registrarServicioEnCliente(scanner);
                    // ic.agregarIncidente(
                      //       pc.buscarClienteId(nroCliente)
                    // );

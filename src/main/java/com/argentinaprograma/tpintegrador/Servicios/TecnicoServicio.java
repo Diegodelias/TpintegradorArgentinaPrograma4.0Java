@@ -11,6 +11,7 @@ import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import com.argentinaprograma.tpintegrador.Modelo.EspecialidadEnum;
 
 import com.argentinaprograma.tpintegrador.Repositorios.ClienteRepository;
+import com.argentinaprograma.tpintegrador.Repositorios.EspecialidadRepository;
 import com.argentinaprograma.tpintegrador.Repositorios.TecnicoRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,11 @@ import java.util.Scanner;
  */
 public class TecnicoServicio {
      private final TecnicoRepository tecnicoRepository;
+  
 
-    public TecnicoServicio(TecnicoRepository tecnicoRepository) {
+    public TecnicoServicio(TecnicoRepository tecnicoRepository ) {
         this.tecnicoRepository = tecnicoRepository;
+       
     }
     
     
@@ -44,6 +47,39 @@ public class TecnicoServicio {
         
         
     };
+    
+       public void traerTodosLosTecnicos(){
+
+        
+         // clienteRepository.TodosLosClientes();
+        
+        System.out.println("Listado de Tecnicos:");
+     
+      tecnicoRepository.TodosLosTecnicos().forEach(tecnico -> {
+            System.out.println("Nombre Tecnico: " + tecnico.getNombre() +
+                    ", Apellido Tecnico: " + tecnico.getApellido())
+                    ;
+        });
+       
+            
+        
+    }
+       
+    public void tecnicosConEspecialidades(){
+        tecnicoRepository.TodosLosTecnicosEspecialidades();
+    
+    }
+       
+       public void asignarEspecialidadTecnico(Scanner scanner){
+           
+           tecnicoRepository.asignarEspecialidadTecnico();
+           
+           
+       
+       
+       }
+       
+    
     
  
 }

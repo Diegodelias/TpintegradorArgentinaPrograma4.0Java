@@ -38,11 +38,13 @@ public class Tecnico  {
    // private Set<Especialidad> especialidades;
      
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "tecnico_especialidad",
-        joinColumns = @JoinColumn(name = "tecnico_id"),
-        inverseJoinColumns = @JoinColumn(name = "especialidad_id")
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "tecnico_especialidad",
+            joinColumns = @JoinColumn(name = "tecnico_id"),
+            inverseJoinColumns = @JoinColumn(name = "especialidad_id")
     )
     private Set<Especialidad> especialidades = new HashSet<>();
     
@@ -56,13 +58,31 @@ public class Tecnico  {
   
 
 
-
+/*
     public void agregarHabilidad(Especialidad especialidad) {
-        especialidades.add(especialidad);
-    }
+       
+        
+        if(especialidad != null){
+                especialidades.add(especialidad);
+                especialidad.getTecnicos();
+                especialidad.getTecnicos().add(this);
+                System.out.println("se ha agregado la especialidad " + especialidad.getNombre() + " ' al tecnico '" + this.getNombre() + "'");
+        
+        } else {
+            System.out.println("No se peude agregar especialidad al tecnico");
+        }
+        
+    }*/
+    
+    
+    public void agregarEspecialidad(Especialidad especialidad) {
+            especialidades.add(especialidad);
+            especialidad.getTecnicos().add(this);
+}
 
-    public void eliminarHabilidad(EspecialidadEnum especialidad) {
-        especialidades.remove(especialidad);
+    public void eliminarEspecialidad(Especialidad especialidad) {
+              especialidades.remove(especialidad);
+             especialidad.getTecnicos().remove(this);
     }
 
     public boolean tieneHabilidad(String problema) {
@@ -72,7 +92,7 @@ public class Tecnico  {
 
     
     public void asignarNuevaHabilidad(Especialidad nuevaHabilidad) {
-        agregarHabilidad(nuevaHabilidad);
+        agregarEspecialidad(nuevaHabilidad);
         System.out.println("Al tecnico " + this.getNombre()+ " le ha sisdo asinada la Habilidad " + nuevaHabilidad);
     }
 }

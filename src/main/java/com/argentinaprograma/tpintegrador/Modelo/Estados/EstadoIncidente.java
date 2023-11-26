@@ -5,7 +5,7 @@
 package com.argentinaprograma.tpintegrador.Modelo.Estados;
 
 import com.argentinaprograma.tpintegrador.Entidades.Cliente;
-import com.argentinaprograma.tpintegrador.Modelo.Incidente;
+import com.argentinaprograma.tpintegrador.Entidades.Incidente;
 import com.argentinaprograma.tpintegrador.Entidades.Tecnico;
 import java.util.List;
 

@@ -32,8 +32,9 @@ public class Servicio {
     private int complejidadPuntaje;
    
     
-     @ManyToMany(mappedBy = "servicios", fetch = FetchType.LAZY)
-      private Set<Cliente> clientes = new HashSet<>();
+       @ManyToOne(fetch = FetchType.LAZY)
+       @JoinColumn(name = "cliente_id")
+       private Cliente cliente;
    
     
 }

@@ -37,5 +37,43 @@ public class ClienteRepository {
 
         return em.createQuery("select c from Cliente c", Cliente.class).getResultList();
     }
+      
+     public List<Cliente> seleccionarClientePorDni(String dni){
+         String query = "SELECT c FROM Cliente c WHERE c.dni = :dni";
+         
+          List<Cliente> clientes = em.createQuery(query, Cliente.class).setParameter("dni", dni).getResultList();
+          
+           if (!clientes.isEmpty()) {
+      
+            Cliente cliente = clientes.get(0);
+
+            System.out.println("Cliente encontrado: " + cliente.getNombre() + " - " + cliente.getApellido() + " - " + cliente.getDni());
+        } else {
+            System.out.println("Cliente no encontrado.");
+        }
+          
+         
+         return clientes;
+     
+     }
+     
+    public void actualizarCliente(Cliente cliente) {
+
+        try {
+            em.getTransaction().begin();
+
+            // Persist the updated client back to the database
+            em.merge(cliente);
+
+            em.getTransaction().commit();
+            System.out.println("Client actualizado correctamente.");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace(); // Handle the exception appropriately
+        } finally {
+            em.close();
+        }
+
+    }
     
 }

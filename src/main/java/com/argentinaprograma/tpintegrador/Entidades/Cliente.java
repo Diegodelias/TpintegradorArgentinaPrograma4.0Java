@@ -32,31 +32,25 @@ public class Cliente  {
     private Long id;
     private String nombre;
     private String apellido;
+    private String dni;
     
     /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="cliente_id", referencedColumnName="id")*/
-     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    /* @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
         name = "cliente_servicio",
         joinColumns = @JoinColumn(name = "cliente_id"),
         inverseJoinColumns = @JoinColumn(name = "servicio_id")
-    )
+    )*/
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Servicio> servicios = new HashSet<>();
     private String razonSocial;
     private String CUIT;
     private boolean notificadoIncidente;
     
     
- /*
-    public Cliente(String nombre, String apellido) {
-        super(nombre, apellido);
-        this.servicios = new HashSet<>();
-    }
-    
-    public Cliente() {
- 
-    }
-    */
+
 
     
      public void agregarServicio(Servicio servicio) {
